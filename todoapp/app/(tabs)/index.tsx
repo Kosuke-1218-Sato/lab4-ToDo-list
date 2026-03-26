@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity } from "react-native";
+import { router } from "expo-router";
 
 export default function HomeScreen(){
   return(
@@ -7,9 +8,10 @@ export default function HomeScreen(){
   <Text style={{ color: "blue"}}> Buy milk</Text>
   <Text style={{ color: "blue"}}> Take quiz</Text>
   <Text style={{ color: "blue"}}> Go to gym</Text>
-  <TouchableOpacity style={{ backgroundColor: "yellow", marginTop: 20}}>
+  <TouchableOpacity style={{ backgroundColor: "yellow", marginTop: 20}}
+  onPress={() => router.push("/add")}>
     <Text style={{ color: "black"}}>Add new ToDo</Text>
   </TouchableOpacity>
   </View>
-  );
-}
+  )
+};
