@@ -1,14 +1,19 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import { useLocalSearchParams, router } from "expo-router";
+import { View, Text, TouchableOpacity } from "react-native"; // UI component
+import { useLocalSearchParams, router } from "expo-router"; // take URL and move screen
 import React from "react";
-import { useTodos } from "@/context/TodoContext";
+import { useTodos } from "@/context/TodoContext"; // take todo dta
 
 export default function TodoDetail() {
+
   const { id } = useLocalSearchParams();
+
+  // take all todos from Context
   const { todos } = useTodos();
 
+  // serch todo that matched id
   const todo = todos.find((item) => item.id === String(id));
 
+  // show when cannot find
   if (!todo) {
     return (
       <View
@@ -33,6 +38,7 @@ export default function TodoDetail() {
         alignItems: "center",
       }}
     >
+      {/* UI of center card */}
       <View
         style={{
           width: "90%",
@@ -45,6 +51,7 @@ export default function TodoDetail() {
           elevation: 5,
         }}
       >
+        {/* show a title */}
         <Text
           style={{
             fontSize: 28,
@@ -56,6 +63,7 @@ export default function TodoDetail() {
           {todo.title}
         </Text>
 
+        {/* show a description */}
         <Text
           style={{
             fontSize: 18,
@@ -66,6 +74,7 @@ export default function TodoDetail() {
           {todo.description}
         </Text>
 
+        {/* back button */}
         <TouchableOpacity
           style={{
             backgroundColor: "orange",
@@ -73,9 +82,11 @@ export default function TodoDetail() {
             paddingVertical: 8,
             borderRadius: 8,
           }}
-          onPress={() => router.back()}
+          onPress={() => router.back()} // back to previous screen
         >
-          <Text style={{ fontSize: 18, color: "black" }}>Back</Text>
+          <Text style={{ fontSize: 18, color: "black" }}>
+            Back
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
