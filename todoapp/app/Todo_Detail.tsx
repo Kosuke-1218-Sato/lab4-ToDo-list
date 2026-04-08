@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native"; // UI component
 import { useLocalSearchParams, router } from "expo-router"; // take URL and move screen
 import React from "react";
-import { useTodos } from "@/context/TodoContext"; // take todo dta
+import { useTodos } from "@/src/context/TodoContext"; // take todo dta
 
 export default function TodoDetail() {
 

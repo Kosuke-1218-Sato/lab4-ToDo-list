@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native"; /
 import { router } from "expo-router"; // to move screen
 import { Ionicons } from "@expo/vector-icons"; // icons
 import React, { useState } from "react"; // to manage state
-import { useTodos } from "@/context/TodoContext"; // to take added functions
+import { useTodos } from "@/src/context/TodoContext"; // to take added functions
 import { useFonts, Poppins_400Regular, Poppins_700Bold } from "@expo-google-fonts/poppins"; // font
 
 export default function AddScreen() {
@@ -16,7 +16,7 @@ export default function AddScreen() {
   // to take addTodo functions from Context
   const { addTodo } = useTodos();
 
-  // lord font
+  // load font
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_700Bold,
@@ -49,15 +49,13 @@ export default function AddScreen() {
     // add to Cntext
     addTodo(newTodo);
 
-    // popup to show save is successful
-    Alert.alert("Saved", "New ToDo has been saved.");
-
     // reset input boxs
     setTitle("");
     setDescription("");
 
-    // back to home screen
-    router.replace("/Home");
+    // popup to show save is successful
+    setTimeout(() => {
+    Alert.alert("Saved", "New ToDo has been saved.");}, 100);
   };
 
   return (
@@ -181,7 +179,7 @@ export default function AddScreen() {
           </Text>
         </TouchableOpacity>
 
-        {/* chancel button */}
+        {/* Back button */}
         <TouchableOpacity
           style={{
             backgroundColor: "orange",
@@ -204,7 +202,7 @@ export default function AddScreen() {
               fontFamily: "Poppins_400Regular" as const,
             }}
           >
-            Cancel
+            Back
           </Text>
         </TouchableOpacity>
       </View>
